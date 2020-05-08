@@ -67,3 +67,9 @@ const GetDataAndProcess = async (dataSource, akaData, runnigType, func) => {
     let data = func ? await func(dataSource, runnigType) : akaData;
     await diffsHandler(data, dataSource, akaData.all);
 }
+
+
+const runMssing = async runnigType => {
+
+
+}
