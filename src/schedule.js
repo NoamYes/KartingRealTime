@@ -15,6 +15,7 @@ const scheduleTime = process.env.NODE_ENV === 'production' ? fn.runningTime : ne
 
 schedule.scheduleJob(scheduleTime, async () => await run(fn.runnigTypes.dailyRun));
 schedule.scheduleJob(scheduleRecoveryTime, async () => await run(fn.runnigTypes.recoveryRun));
+// runMissing();
 
 const run = async runnigType => {
     try {
@@ -62,14 +63,10 @@ const run = async runnigType => {
  * @param {*} akaData - The aka data to complete data information
  * @param {*} func - The function thet get and compare data from data source
  */
-const GetDataAndProcess = async (dataSource, akaData, runnigType, func) => {
+const GetDataAndProcess = async (dataSource, akaData, runnigType, func, data_) => {
     // In case datasource is aka, I get data before function and therefore not need to get data again
-    let data = func ? await func(dataSource, runnigType) : akaData;
+    let data = func ? await func(dataSource, runnigType, data_) : akaData;
     await diffsHandler(data, dataSource, akaData.all);
 }
 
-
-const runMssing = async runnigType => {
-
-
-}
+module.exports = {GetDataAndProcess}

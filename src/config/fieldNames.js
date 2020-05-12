@@ -174,6 +174,7 @@ module.exports = {
     runnigTypes: {
         dailyRun: 'daily_run',
         recoveryRun: 'recovery_run',
+        immediateRun: 'immediateRun',
     },
     organizationGroups: {
         incompletes_name: 'incomplete',
