@@ -69,4 +69,3 @@ const GetDataAndProcess = async (dataSource, akaData, runnigType, func, data_) =
     await diffsHandler(data, dataSource, akaData.all);
 }
 
-module.exports = {GetDataAndProcess}

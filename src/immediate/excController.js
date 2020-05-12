@@ -1,14 +1,15 @@
 
 const fn = require('../config/fieldNames');
-const scheduler = require('../schedule');
+const GetDataAndProcess = require('../util/getDataAndProcess');
 const dataSync = require('../util/data_synchronizeData');
 
 module.exports =  class excController {
     static async sendUsers(req, res) {
         const data = req.body;
-        const persons = data.objects;
-        const datasource = data.datasource;
-        await scheduler.GetDataAndProcess(dataSource, {}, fn.runnigTypes.immediateRun, dataSync);
+        const objects = data.objects;
+        const dataSource = data.datasource;
+        // akaData = {} empty as we currently dont catch it
+        await GetDataAndProcess(dataSource, {}, fn.runnigTypes.immediateRun, dataSync, objects);
         console.log(req.body)
         res.json(req.body)
     }

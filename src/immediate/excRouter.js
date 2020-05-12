@@ -6,8 +6,10 @@ const excRouter = express.Router();
 const PermissionMiddlewareFunc = () => {return};
 const validatorMiddlewareFunc = () => {return};
 
-excRouter.post('/users', PermissionMiddlewareFunc,
+excRouter.post('/exc', PermissionMiddlewareFunc,
             validatorMiddlewareFunc,
              (req, res) => {
                 eController.sendUsers(req, res)
              });
+
+module.exports = {excRouter}

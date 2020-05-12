@@ -1,7 +1,8 @@
 express = require('express');
 config = require('./config/config.js')
-excRouter = require('./excRouter.js')
-
+// excRouter = require('./excRouter.js')
+bodyParser = require('body-parser');
+eController = require('./excController')
 
 class Server {
 
@@ -17,9 +18,19 @@ class Server {
     }
 
     configureApiRoutes() {
-      this.app.use('/exc', excRouter);
+      this.app.use(bodyParser.json());
+      this.app.use(bodyParser.urlencoded({ extended: true }));
+      // this.app.use('/exc', excRouter);
+
+      this.app.route('/exc').post((req, res) => {
+        eController.sendUsers(req, res)
+      }) 
+
     }
 }
+
+const PermissionMiddlewareFunc = () => {return};
+const validatorMiddlewareFunc = () => {return};
 
 excServer = new Server();
 excServer.configureApiRoutes();
