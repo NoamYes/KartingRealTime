@@ -1,3 +1,5 @@
+const diffsHandler = require('./diffsHandler');
+
 /**
  *
  * @param {*} dataSource - The source of the data
